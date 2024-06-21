@@ -1,0 +1,29 @@
+// Define the leads-off detection pins
+const int LO_PLUS_PIN = 10; // Leads-off detection pin +
+const int LO_MINUS_PIN = 11; // Leads-off detection pin -
+
+void setup() {
+ // Start serial communication at 9600 baud rate
+ Serial.begin(9600);
+
+ // Set the leads-off detection pins as inputs
+ pinMode(LO_PLUS_PIN, INPUT);
+ pinMode(LO_MINUS_PIN, INPUT);
+}
+
+void loop() {
+\
+ if (digitalRead(LO_PLUS_PIN) == HIGH || digitalRead(LO_MINUS_PIN) == HIGH) {
+    Serial.println("Leads off! Tolong pakai dengan kemas.");
+ } else {
+    
+    int heartRateValue = analogRead(A0);
+
+    
+    Serial.print("Heart Rate (BPM): ");
+    Serial.println(heartRateValue);
+    
+ }
+
+ delay(1500); 
+}
